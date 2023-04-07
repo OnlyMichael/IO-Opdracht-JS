@@ -1,52 +1,46 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Formulier Valideren met JavaScript</title>
+    <title>Michael Adebowale IO Opdracht JS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-  
-  
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>Registreer</h1>
-        <p>Meld je aan bij Anoroc Services, wij beschermen jouw software tegen malware!</p>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Registreer</h1>
+                <label>Meld je aan Anoroc Services, Wij beschermen jouw software tegen malware!</label>
+            </div>
+        </div>
     </div>
-  </div>
-
-
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8">
-        
-
-
-      </div>
-
-
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+              <div class="col">
+                  <label for="textvoornaam">Voornaam</label>
+                  <input type="text" class="form-control" id="txtvoornaam" placeholder="Uw voornaam">
+             </div>
+             <div class="col">
+                  <label for="textnaam">Achternaam</label>
+                 <input type="text" class="form-control" id="txtnaam" placeholder="Uw achternaam ">
+             </div>
+             
+           </div>
+            <div class="col-sm-4">
+              <div class="col">
+                <h4 id="red" style="background-color: rgb(237, 87, 87); visibility: hidden;">Yikes,errors..
+                    <p style="font-size: medium;" id="alertred"></p>
+                </h4>
+             </div>
+            </div>
+       </div>
 
+    </body>
 
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="script.js"></script>
-</body>
 </html>
