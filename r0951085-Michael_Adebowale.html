@@ -71,12 +71,25 @@
               <label for="txtemail">E-mailadres</label>
               <input type="email" class="form-control " id="txtemail" placeholder="mail@example.be ">
           </div>
-          
-
       </div>
-  </div>
+   </div>
 
+   <div class="container">
+    <div class="row">
+        <div class="col">
+            <label for="txtwachtwoord ">Wachtwoord</label>
+            <input type="password" pattern="{7,}" class="form-control" id="txtwachtwoord" placeholder=" " title= "Moet minstens 1 nummer, 1 grote en 1 kleine letter bevatten, en minstens 8 karakters">
+            <small id="passwordHelpInline" class="text-muted">
+                Je wachtwoord moet minstens 8 tekens lang zijn.
+              </small>
+        </div>
+        <div class="col">
+            <label for="txtherwachtwoord ">Herhaal wachtwoord</label>
+            <input type="password" class="form-control" id="txtherwachtwoord" placeholder=" ">
 
+           </div>
+        </div>
+    </div>
 
 
 
