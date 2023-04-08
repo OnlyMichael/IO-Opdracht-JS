@@ -39,11 +39,19 @@
                 </h4>
              </div>
 
+             <div class="alert alert-danger">
+                <strong>Yikes, errors...</strong> 
+              </div>
+
              <div class="col">
               <h4 id="green" style="background-color: rgb(123, 239, 123); visibility: hidden;">Goed gedaan!
                   <p id="alertgreen"></p>
               </h4>
              </div>
+
+             <div class="alert alert-success">
+                <strong>Goed gedaan!</strong>
+              </div>
 
              <div class="col">
               <h4 id="blue" style="background-color: rgb(131, 205, 230); visibility: hidden;">Betalingswijze
@@ -51,10 +59,14 @@
               </h4>
           </div>
 
+          <div class="alert alert-info">
+            <strong>Betalingswijze</strong>
+          </div>
+
             </div>
        </div>
     </div>
-
+                <!-- form -->
     <div class="container">
       <div class="row">
           <div class="col">
@@ -83,18 +95,101 @@
                 Je wachtwoord moet minstens 8 tekens lang zijn.
               </small>
         </div>
-        <div class="col">
-            <label for="txtherwachtwoord ">Herhaal wachtwoord</label>
-            <input type="password" class="form-control" id="txtherwachtwoord" placeholder=" ">
+             <div class="col">
+                  <label for="txtherwachtwoord ">Herhaal wachtwoord</label>
+                    <input type="password" class="form-control" id="txtherwachtwoord" placeholder=" ">
 
-           </div>
+             </div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label for="txtadres ">Adres</label>
+                <input type="text " class="form-control " id="txtadres" placeholder="Uw adres en huisnummer ">
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label for="dlland ">Land</label>
+                <select class="form-control" id="dlland" required>
+                    <option selected>Kies een land!</option>
+                    <option>Belgium</option>
+                    <option>Brazil</option>
+                    <option>Canada</option>
+                    <option>China</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                    <option>India</option>
+                    <option>Itali</option>
+                    <option>Japan</option>
+                    <option>Russia</option>
+                    <option>The Netherlands</option>
+                    <option>United Kingdom</option>
+                    <option>United States</option>
+                </select>
+            </div>
+            <div class="col ">
+                <label for="dlprovincie ">Provincie</label>
+                <select class="form-control" id="dlprovincie" required>
+                    <option selected>Kies een provincie!</option>
+                    <option >Antwerpen</option>
+                    <option >Limburg</option>
+                    <option >Luik</option>
+                    <option >Sao-paulo</option>
+                    <option >Minas-Gerais</option>
+                    <option >Rio de Janeiro</option>
+                    <option >Ontario</option>
+                    <option >Quebec</option>
+                    <option >Britisch Colombia</option>
+                    <option >Shanghai</option>
+                    <option >Beijing</option>
+                    <option >Guangdong</option>
+                    <option >Paris</option>
+                    <option >Ile-de-France</option>
+                    <option >Provence-Alpes-Côte d'Azur</option>
+                    <option >Beieren</option>
+                    <option >Noordrijn-Westfalen</option>
+                    <option >Baden-Württemberg</option>
+                    <option >Maharashtra</option>
+                    <option >Uttar Pradesh</option>
+                    <option >Rajasthan</option>
+                    <option >Lombardijë</option>
+                    <option >Veneto</option>
+                    <option >Toscane</option>
+                    <option >Tokyo</option>
+                    <option >Osata</option>
+                    <option >Kyoto</option>
+                    <option >Moskou</option>
+                    <option >Sint-Petersburg</option>
+                    <option >Novosibirsk Oblast</option>
+                    <option >Noord-Holland</option>
+                    <option >Zuid-Holland</option>
+                    <option >Utrecht</option>
+                    <option >London</option>
+                    <option >Schotland</option>
+                    <option >Wales</option>
+                    <option >California</option>
+                    <option >Texas</option>
+                    <option >New York</option>
+                </select>
+            </div>
+            
 
-
+            <div class="col">
+                <label for="txtpostcode ">Postcode</label>
+                <input type="number" class="form-control " id="txtpostcode" required>
+            </div>
+        </div>
+    </div>
 
     </body>
-
+ <!-- Bronnenlijst -->
+ <!-- https://www.w3schools.com/bootstrap/bootstrap_forms.asp -->
+ <!-- https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp -->
+ <!-- https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
 </html>
