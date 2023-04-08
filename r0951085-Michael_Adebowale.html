@@ -27,8 +27,8 @@
                   <input type="text" class="form-control" id="txtvoornaam" placeholder="Uw voornaam">
              </div>
              <div class="col">
-                  <label for="txtnaam">Achternaam</label>
-                 <input type="text" class="form-control" id="txtnaam" placeholder="Uw achternaam ">
+                  <label for="txtachternaam">Achternaam</label>
+                 <input type="text" class="form-control" id="txtachternaam" placeholder="Uw achternaam ">
              </div>
               <!-- alerts -->
             </div>
@@ -39,8 +39,9 @@
                 </h4>
              </div>
 
-             <div class="alert alert-danger">
+             <div class="alert alert-danger alert-dismissible fade show" role="alert" id="red" >
                 <strong>Yikes, errors...</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
 
              <div class="col">
@@ -49,8 +50,9 @@
               </h4>
              </div>
 
-             <div class="alert alert-success">
+             <div class="alert alert-success alert-dismissible fade show" id="green" role="alert">
                 <strong>Goed gedaan!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
 
              <div class="col">
@@ -59,8 +61,9 @@
               </h4>
           </div>
 
-          <div class="alert alert-info">
+          <div class="alert alert-info alert-dismissible fade show" id="blue" role="alert">
             <strong>Betalingswijze</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
 
             </div>
@@ -246,10 +249,119 @@
     <div class="container ">
         <div class="row ">
             <div class="auto">
-                <button type="button " id="btnregistreren" class="btn btn-primary " style="width:595%">Wave your magic wand</button>
+                <button type="button " id="btnregistreren" class="btn btn-primary " style="width:600%">Wave your magic wand</button>
             </div>
         </div>
     </div>
+
+    <script>
+        let errorsarray = [];
+
+        document.querySelector("#btnregistreren").addEventListener("click", ValidateForm);
+
+
+        function ValidateForm() {
+
+
+            checkEmptyField("txtvoornaam", "Het veld voornaam is vereist\n")
+            checkEmptyField("txtachternaam", "Het veld achternaam is vereist")
+            checkEmptyField("txtgebruikersnaam", "Het veld gebruikersnaam is vereist")
+            checkEmptyField("txtadres", "Adres is vereist")
+            checkEmptyField("dlland", "Het veld land  is vereist")
+            checkEmptyField("dlprovincie", "Provincie  is vereist")
+
+            if (validateEmail("txtemail")) {} else {
+                errorsarray.push("E-mailaders is niet correct");
+                console.log(errorsarray)
+            }
+            passwordcheck("txtwachtwoord", "txtherwachtwoord")
+            validatePayment(rb)
+            controlealerts()
+        }
+
+        function checkEmptyField(gegeven, tekst) {
+            vullen = document.getElementById(gegeven);
+            if (vullen.value == "" || vullen.value == "Kies een land!" || vullen.value == "Kies een provincie!") {
+                if(errorsarray.includes(tekst) == false)
+                {
+                    errorsarray.push(tekst);
+                }
+            }
+            
+        }
+
+        function validateEmail(email) {
+            //validatie email https://www.codegrepper.com/code-examples/javascript/javascript+regex+email
+            email2 = document.getElementById(email);
+            var regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (email2.value == "") {
+
+            } else {
+                if (email2.match(regexEmail)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        function passwordcheck(wachtwoord1, wachtwoord2) {
+            ww1 = document.getElementById(wachtwoord1);
+            ww2 = document.getElementById(wachtwoord2);
+            var passw = /^\w{8,}$/;
+
+            if (ww1.value == "") {
+                errorsarray.push("Het veld wachtwoord is vereist");
+                console.log(errorsarray)
+            }
+            if (ww2.value == "") 
+            {
+                errorsarray.push("Het veld herhalend wachtwoord is vereist");
+                console.log(errorsarray)
+            }
+
+            if (ww1.value.match(passw)) 
+            {
+
+            } 
+            else 
+            {
+                errorsarray.push("Het wachtwoord is te kort");
+                console.log(errorsarray)
+            }
+            if (ww1.value != ww2.value) 
+            {
+                errorsarray.push("Je wachtwoorden komen niet overeen.");
+                console.log(errorsarray)
+            }
+        }
+
+        function validatePayment(rb) {
+            // geg = document.querySelector('input[name="rb"]:checked').value;
+        }
+
+        function controlealerts() {
+            let lengtearray = errorsarray.length
+            if (lengtearray == 0) {
+                document.getElementById('green').style.visibility = "visible";
+                document.getElementById('blue').style.visibility = "visible";
+            } else {
+                let i = 0;
+                let errors;
+                while (i < errorsarray.length) {
+                    errors += errorsarray[i] + "<br>";
+                    i++;
+                }
+                document.getElementById('alertred').innerHTML = errors;
+                document.getElementById('red').style.visibility = "visible";
+            }
+        }
+    </script>
+
+    <!--  JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
 
     </body>
  <!-- Bronnenlijst -->
@@ -257,4 +369,7 @@
  <!-- https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp -->
  <!-- https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
  <!-- VS Code copilot -->
+ <!-- https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
+ <!-- https://www.w3schools.com/bootstrap/bootstrap_forms_inputs2.asp -->
+ <!-- https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp -->
 </html>
