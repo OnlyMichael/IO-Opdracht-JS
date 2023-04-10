@@ -49,7 +49,7 @@
              
 
           <div class="row alert alert-info " id="blue" role="alert" style="visibility: hidden;">
-            <strong>Betalingswijze</strong>  <p> <br> Je betalingswijze is ${btlw}</p>
+            <strong>Betalingswijze</strong>   <p id="btlw"> Je betalingswijze is .... </p>       <script>   document.getElementById("btlw").innerHTML = "Je betalingswijze is Banking"</script> </p>
           </div>
 
             </div>
@@ -241,11 +241,12 @@
     </div>
 
     <script>
+        //lege array voor de errors
         let errorsarray = [];
 
         document.querySelector("#btnregistreren").addEventListener("click", ValidateForm);
 
-
+            // validatie formulier
         function ValidateForm() 
         {
             errorsarray = []
@@ -264,7 +265,7 @@
             validatePayment()
             controlealerts()
         }
-
+            // kijken of het leeg is
         function checkEmptyField(gegeven, tekst) {
             vullen = document.getElementById(gegeven);
             if (vullen.value == "" || vullen.value == "Kies een land!" || vullen.value == "Kies een provincie!") {
@@ -276,9 +277,11 @@
             }
             
         }
+        
 
         function validateEmail(email) {
             //validatie email https://www.codegrepper.com/code-examples/javascript/javascript+regex+email
+            //https://www.w3resource.com/javascript/form/email-validation.php
             email2 = document.getElementById(email).value;
             var valEmail =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             if (email == "") {} 
@@ -324,16 +327,39 @@
                 console.log(errorsarray)
             }
         }
+        
+        function validatepostcode(){
+            postcode = document.getElementById("txtpostcode");
+            // var postcodecheck = /^[1-9][0-9]{3}\s?[a-zA-Z]{2}$/;
+            // if (postcode.value.match(postcodecheck)) 
+            // {
 
-        function validatePayment() {
-            
+            // } 
+            // else 
+            // {
+            //     errorsarray.push("De postcode is niet correct");
+            //     console.log(errorsarray)
+            // }
+            if (postcode.value < 1000 || postcode.value > 9999) 
+            {
+                errorsarray.push("De waarde van postcode moet tussen 1000 en 9999 liggen.");
+                console.log(errorsarray)
+            }
         }
 
+
+        function validateBetaling() {
+            
+        }
+        //alerts laten zien of verbergen, afhankelijk van de errors
         function controlealerts() {
             let lengtearray = errorsarray.length
             if (lengtearray == 0) {
+                errorsarray = [];
                 document.getElementById('green').style.visibility = "visible";
                 document.getElementById('blue').style.visibility = "visible";
+                document.getElementById('red').style.visibility = "hidden";
+                
             } else {
                 let i = 0;
                 let errors;
@@ -343,8 +369,12 @@
                 }
                 document.getElementById('alertred').innerHTML = errors;
                 document.getElementById('red').style.visibility = "visible";
+                document.getElementById('green').style.visibility = "hidden";
+                document.getElementById('blue').style.visibility = "hidden";
             }
         }
+
+        
     </script>
 
     <!--  JavaScript -->
