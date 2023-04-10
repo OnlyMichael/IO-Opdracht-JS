@@ -33,37 +33,23 @@
               <!-- alerts -->
             </div>
             <div class="col-sm-4">
-              <div class="col">
-                <h4 id="red" style="background-color: rgb(237, 87, 87); visibility: hidden;">Yikes, errors..
-                    <p style="font-size: medium;" id="alertred"></p>
-                </h4>
-             </div>
+              
 
-             <div class="alert alert-danger alert-dismissible fade show" role="alert" id="red" >
+             <div class="row alert alert-danger " role="alert" id="red" style="visibility: hidden;" >
                 <strong>Yikes, errors...</strong> 
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <p id="alertred"> </p>
               </div>
 
-             <div class="col">
-              <h4 id="green" style="background-color: rgb(123, 239, 123); visibility: hidden;">Goed gedaan!
-                  <p id="alertgreen"></p>
-              </h4>
-             </div>
+             
 
-             <div class="alert alert-success alert-dismissible fade show" id="green" role="alert">
-                <strong>Goed gedaan!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             <div class="row alert alert-success " id="green" role="alert" style="visibility: hidden;">
+                <strong>Goed gedaan!</strong> <p>Aww, yeahh, je bent geregistreerd...</p>
               </div>
 
-             <div class="col">
-              <h4 id="blue" style="background-color: rgb(131, 205, 230); visibility: hidden;">Betalingswijze
-                  <p id="alertblue"></p>
-              </h4>
-          </div>
+             
 
-          <div class="alert alert-info alert-dismissible fade show" id="blue" role="alert">
-            <strong>Betalingswijze</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <div class="row alert alert-info " id="blue" role="alert" style="visibility: hidden;">
+            <strong>Betalingswijze</strong>  <p> <br> Je betalingswijze is ${btlw}</p>
           </div>
 
             </div>
@@ -260,9 +246,9 @@
         document.querySelector("#btnregistreren").addEventListener("click", ValidateForm);
 
 
-        function ValidateForm() {
-
-
+        function ValidateForm() 
+        {
+            errorsarray = []
             checkEmptyField("txtvoornaam", "Het veld voornaam is vereist\n")
             checkEmptyField("txtachternaam", "Het veld achternaam is vereist")
             checkEmptyField("txtgebruikersnaam", "Het veld gebruikersnaam is vereist")
@@ -271,11 +257,11 @@
             checkEmptyField("dlprovincie", "Provincie  is vereist")
 
             if (validateEmail("txtemail")) {} else {
-                errorsarray.push("E-mailaders is niet correct");
+                errorsarray.push("E-mailadres is niet correct");
                 console.log(errorsarray)
             }
             passwordcheck("txtwachtwoord", "txtherwachtwoord")
-            validatePayment(rb)
+            validatePayment()
             controlealerts()
         }
 
@@ -285,6 +271,7 @@
                 if(errorsarray.includes(tekst) == false)
                 {
                     errorsarray.push(tekst);
+                    console.log(errorsarray)
                 }
             }
             
@@ -292,15 +279,17 @@
 
         function validateEmail(email) {
             //validatie email https://www.codegrepper.com/code-examples/javascript/javascript+regex+email
-            email2 = document.getElementById(email);
-            var regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if (email2.value == "") {
-
-            } else {
-                if (email2.match(regexEmail)) {
+            email2 = document.getElementById(email).value;
+            var valEmail =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (email == "") {} 
+            else 
+            {
+                if (email2.match(valEmail)) {
                     return true;
+                    console.log("email is correct")
                 } else {
                     return false;
+                    console.log("email is niet correct")
                 }
             }
         }
@@ -336,8 +325,8 @@
             }
         }
 
-        function validatePayment(rb) {
-            // geg = document.querySelector('input[name="rb"]:checked').value;
+        function validatePayment() {
+            
         }
 
         function controlealerts() {
@@ -365,9 +354,12 @@
 
     </body>
  <!-- Bronnenlijst -->
+
  <!-- https://www.w3schools.com/bootstrap/bootstrap_forms.asp -->
  <!-- https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp -->
  <!-- https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
+ <!-- https://www.codegrepper.com/code-examples/javascript/javascript+regex+email -->
+ <!-- https://www.w3resource.com/javascript/form/email-validation.php -->
  <!-- VS Code copilot -->
  <!-- https://www.w3schools.com/bootstrap/bootstrap_forms_inputs.asp -->
  <!-- https://www.w3schools.com/bootstrap/bootstrap_forms_inputs2.asp -->
